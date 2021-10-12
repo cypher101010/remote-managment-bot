@@ -2,8 +2,6 @@
 # server image link - https://cdn.icon-icons.com/icons2/1852/PNG/512/iconfinder-valueserver-4417114_116617.png
 import discord, os, psutil, platform
 from datetime import datetime
-from dotenv import load_dotenv
-
 
 load_dotenv()
 client = discord.Client()
