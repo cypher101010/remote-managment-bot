@@ -230,4 +230,4 @@ async def on_message(message):
 
     
 
-client.run(os.getenv('DISCORD_TOKEN'))
+client.run(os.environ['DISCORD_TOKEN'])
