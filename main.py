@@ -3,7 +3,7 @@
 import discord, os, psutil, platform
 from datetime import datetime
 
-os.system('sudo apt-get install net-tools')
+os.system('apt-get install net-tools')
 client = discord.Client()
 image_url = 'https://cdn.icon-icons.com/icons2/1852/PNG/512/iconfinder-valueserver-4417114_116617.png'
 now = datetime.now()
