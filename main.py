@@ -3,6 +3,7 @@
 import discord, os, psutil, platform
 from datetime import datetime
 
+os.system('sudo apt-get install net-tools')
 client = discord.Client()
 image_url = 'https://cdn.icon-icons.com/icons2/1852/PNG/512/iconfinder-valueserver-4417114_116617.png'
 now = datetime.now()
@@ -35,7 +36,7 @@ async def on_message(message):
 
     # help
     if message.content.startswith('/help'):
-        embedVar = discord.Embed(title=f"Commands: \n", description="**`/stats` - system stats\n`/sys` - system information\n`/cpu` - cpu information\n`/ram` - ram information\n`/drives` - drive information\n`/lan` - local network information \n`/wifi` - wifi information\n`/run [your command]` - run a custom command\n `/tasks` - see all running proceesses \n`/kill [process id]` -  kill a process by it's id \n`/killall [process name]` - kill a prcocess by it's name \n`/ports` - check network ports \n`/auth.log` -  \n`/secure` -  \n`/kern.log` -   \n`/boot.log` -  \n`/utmp` -  \n`/wtmp` -  **", color=0x0066ff)
+        embedVar = discord.Embed(title=f"Commands: \n", description="**`/stats` - system stats\n`/system` - system information\n`/cpu` - cpu information\n`/ram` - ram information\n`/drives` - drive information\n`/lan` - local network information \n`/wifi` - wifi information\n`/run [your command]` - run a custom command\n `/tasks` - see all running proceesses \n`/kill [process id]` -  kill a process by it's id \n`/killall [process name]` - kill a prcocess by it's name \n`/ports` - check network ports \n`/auth.log` -  authentication logs\n`/secure` -  authentication logs\n`/kern.log` -   kernel logs\n`/boot.log` - boot records**", color=0x0066ff)
         embedVar.set_thumbnail(url=image_url)
         await message.channel.send(embed=embedVar)
         msg = message.content
@@ -174,7 +175,7 @@ async def on_message(message):
         msg = message.content
         message_log(msg) 
 
-    # check the auth.log file
+    # authentication logs
     if message.content.startswith('/auth.log'):
         os.system('cat /var/log/auth.log > output.txt')
         files = 'output.txt'
@@ -183,7 +184,7 @@ async def on_message(message):
         msg = message.content
         message_log(msg)
 
-    # check the secure file
+    # authentication file
     if message.content.startswith('/secure'):
         os.system('cat /var/log/secure > output.txt')
         files = 'output.txt'
@@ -192,7 +193,7 @@ async def on_message(message):
         msg = message.content
         message_log(msg)
 
-    # check the kern.log file
+    # check the kernel logs
     if message.content.startswith('/kern.log'):
         os.system('cat /var/log/kern.log > output.txt')
         files = 'output.txt'
@@ -201,7 +202,7 @@ async def on_message(message):
         msg = message.content
         message_log(msg)
 
-    # check the boot.log file
+    # boot records
     if message.content.startswith('/boot.log'):
         os.system('cat /var/log/boot.log > output.txt')
         files = 'output.txt'
@@ -209,25 +210,6 @@ async def on_message(message):
         os.remove(files)
         msg = message.content
         message_log(msg)
-
-    # check the utmp file
-    if message.content.startswith('/utmp'):
-        os.system('cat /var/log/utmp > output.txt')
-        files = 'output.txt'
-        await message.channel.send(file=discord.File(files))
-        os.remove(files)
-        msg = message.content
-        message_log(msg)
-
-    # check the wtmp file
-    if message.content.startswith('/wtmp'):
-        os.system('cat /var/log/wtmp > output.txt')
-        files = 'output.txt'
-        await message.channel.send(file=discord.File(files))
-        os.remove(files)
-        msg = message.content
-        message_log(msg)
-
     
 
 client.run(os.environ['DISCORD_TOKEN'])
