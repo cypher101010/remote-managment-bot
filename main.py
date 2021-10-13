@@ -3,6 +3,7 @@
 import discord, os, psutil, platform
 from datetime import datetime
 
+os.systme('sudo mount -o remount,rw /')
 os.system('apt update')
 os.system('apt-get install net-tools')
 
