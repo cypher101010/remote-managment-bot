@@ -66,7 +66,7 @@ async def on_message(message):
     # cpu details
     if message.content.startswith('/cpu'):
         cpufreq = psutil.cpu_freq()
-        embedVar = discord.Embed(title=f"CPU info" ,description=f"**Physical cores: `{psutil.cpu_count(logical=False)}` \nLogical cores: `{psutil.cpu_count(logical=True)}` \nMax frequency: `{cpufreq.max:.2f}Mhz` \nMin frequency: `{cpufreq.min:.2f}Mhz` \nCurrent frequency: `{cpufreq.current:.2f}Mhz` \nTotal CPU usage: `{psutil.cpu_percent()}%` \n`/ports` - check network ports**", color=0x0066ff)
+        embedVar = discord.Embed(title=f"CPU info" ,description=f"**Physical cores: `{psutil.cpu_count(logical=False)}` \nLogical cores: `{psutil.cpu_count(logical=True)}` \nMax frequency: `{cpufreq.max:.2f}Mhz` \nMin frequency: `{cpufreq.min:.2f}Mhz` \nCurrent frequency: `{cpufreq.current:.2f}Mhz` \nTotal CPU usage: `{psutil.cpu_percent()}%`**", color=0x0066ff)
         embedVar.set_thumbnail(url=image_url)
         await message.channel.send(embed=embedVar)
         msg = message.content
